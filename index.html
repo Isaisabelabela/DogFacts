@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>🐶 Fatos sobre Cachorros</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    #fatos {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>🐾 Fatos Aleatórios sobre Cachorros</h1>
+
+  <p>Esta página consulta uma API pública e retorna fatos curiosos sobre cães.  
+    Informe quantos fatos deseja ver e clique em <strong>Buscar Fatos</strong>.</p>
+
+  <label for="quantidade">Quantos fatos você deseja?</label>
+  <input type="number" id="quantidade" min="1" max="10" value="1">
+
+  <button onclick="buscarFatos()">Buscar Fatos</button>
+
+  <div id="fatos"></div>
+
+  <script>
+    async function buscarFatos() {
+      const qtd = document.getElementById("quantidade").value;
+      const url = `https://dogapi.dog/api/facts?number=${qtd}`;
+  
+      const divFatos = document.getElementById("fatos");
+      divFatos.innerHTML = "<p>Carregando...</p>";
+  
+      try {
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+  
+        let lista = "<ul>";
+        for (const item of dados.facts) {
+          lista += `<li>${item}</li>`;
+        }
+        lista += "</ul>";
+        divFatos.innerHTML = lista;
+      } catch (error) {
+        divFatos.innerHTML = "<p>Erro ao carregar os fatos. Verifique sua conexão ou tente novamente.</p>";
+        console.error(error);
+      }
+    }
+  </script>
+  
+</body>
+</html>
