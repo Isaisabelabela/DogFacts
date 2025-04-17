@@ -33,7 +33,7 @@ Essa API retorna fatos aleatórios em formato **JSON**, e é acessível diretame
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   git clone https://[ithub.com/Isaisabelabela/DogFacts]
    ```
 
 2. Abra o arquivo `index.html` no seu navegador.
@@ -47,6 +47,3 @@ Essa API retorna fatos aleatórios em formato **JSON**, e é acessível diretame
 - Uso mais limpo e moderno comparado ao XMLHttpRequest.
 - Ideal para interações rápidas e dinâmicas com o usuário.
 
----
-
-Feito com ❤️ para os amantes de cachorros!
